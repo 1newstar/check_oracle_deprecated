@@ -7,8 +7,5 @@ Some random oracle check scripts
 - --sid SID 
 - --authfile - An authfile with the following information:
 
-<file>
 username
-
 password
-</file>
