@@ -3,15 +3,15 @@ Some random oracle check scripts
 
 ## All chek_oracle scripts share the following parameters:
 
-- --hostname  [ip¦hostname]
-- -H [ip¦hostname]
-- --sid SID 
-- --authfile - An authfile with username and a password below '\n'
-- -A - An authfile with username and a password below '\n'
-- --username - a username
-- --password - a password
-- -v - be verbous
-- -h - help not yet written on all checks
+- **--hostname**  [ip¦hostname]
+- **-H** [ip¦hostname]
+- **--sid** SID 
+- **--authfile** - An authfile with username and a password below '\n'
+- **-A** - An authfile with username and a password below '\n'
+- **--username** - a username
+- **--password** - a password
+- **-v** - be verbous
+- **-h** - help not yet written on all checks
 
 Parameters can always be found in the main script under **Getopt::Long** :
 
