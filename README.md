@@ -83,3 +83,27 @@ OK       - USERS_​LOB 	84.​71% 	 W​[96%]​:C​[100%]​:AE​[NO]​:DF�
 
 
 
+### ./check_oracle_sap_jobs.pl 
+
+Check if SAP-Jobs are running and when the where last run.
+
+- **-W** - Warning in Minutes - I a Job is not run for x-minutes warn.
+- **-C** - Critical in Minutes
+
+**Example:**
+
+<pre>
+./check_oracle_sap_jobs.pl --hostname hostname --sid SID --authfile ../auth.file -W 4000 -C 5760 -F vst
+</pre>
+
+Maybe this helps to clarify:
+
+<pre>
+ my $sql = "select * FROM ( select FUNCT,ENDE,RC from $Options{'schema'} where FUNCT=\'$Options{'funct'}\' order by ENDE desc ) WHERE rownum = 1";
+</pre>
+
+:) - I really think none but me has use for it ...
+
+
+
+
