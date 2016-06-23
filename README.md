@@ -15,6 +15,8 @@ Some random oracle check scripts
 
 Parameters can always be found in the main script under **Getopt::Long** :
 
+**Example:**
+
 <pre>
 #===============================================================================
 # Getopt::Long;
