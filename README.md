@@ -86,7 +86,7 @@ OK       - USERS_​LOB 	84.​71% 	 W​[96%]​:C​[100%]​:AE​[NO]​:DF�
 ### ./check_oracle_sap_jobs.pl 
 
 Check if a SAP-job was running and when it was last run.
-Warns if there is a failure or if the job was not rrun for x-minutes.
+Warns if there is a failure or if the job was not run for x-minutes.
 
 - **-W** - Warning in Minutes - If a job is not run for x-minutes warn.
 - **-C** - Critical in Minutes
