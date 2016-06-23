@@ -6,6 +6,5 @@ Some random oracle check scripts
 - --hostname  [ip¦hostname]
 - --sid SID 
 - --authfile - An authfile with the following information:
-
-username
-password
+..- username
+..- password
