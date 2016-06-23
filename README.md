@@ -39,6 +39,9 @@ GetOptions(\%Options,
 </pre>
 
 There are at least two modules for each check:
+
+**Example:**
+
 <pre>
 ./lib/OracleStatus/ParseOptions.pm
 ./lib/OracleStatus/SQL.pm
