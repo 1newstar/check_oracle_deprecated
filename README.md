@@ -49,7 +49,7 @@ GetOptions(\%Options,
 
 ### ./check_oracle_tablespace_multi.pl
 
-Check multiple Oracle Tablespaces at once.
+Check multiple Oracle tablespaces at once.
 
 **Example:**
 
