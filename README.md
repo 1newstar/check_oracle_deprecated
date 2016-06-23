@@ -38,6 +38,15 @@ GetOptions(\%Options,
 );
 </pre>
 
+There are at least two modules for each check:
+<pre>
+./lib/OracleStatus/ParseOptions.pm
+./lib/OracleStatus/SQL.pm
+</pre>
+
+- **ParseOptions.pm** - Module wich handels the parameters, options.
+- **SQL.pm** - SQL related stuff
+
 
 
 ### .check_oracle_status.pl
