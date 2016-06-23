@@ -1,11 +1,11 @@
 #!/usr/bin/env perl 
 #===============================================================================
 #
-#         FILE: check_tablespace_multi.pl
+#         FILE: check_oracle_open_processes.pl
 #
-#        USAGE: ./check_tablespace_multi.pl  
+#        USAGE: ./check_oracle_open_processes.pl  
 #
-#  DESCRIPTION: Checks multiple oracle tablespaces
+#  DESCRIPTION: Checks open oracle processes
 #
 #      OPTIONS: ---
 # REQUIREMENTS: ---
@@ -221,11 +221,11 @@ __END__
 
 =head1 NAME
 
-check_tablespace_multi.pl - Checks multiple oracle tablespaces
+check_oracle_open_processes.pl - Checks multiple oracle tablespaces
 
 =head1 SYNOPSIS
 
-./check_tablespace_multi.pl 
+./check_oracle_open_processes.pl 
 
 =head1 DESCRIPTION
 
