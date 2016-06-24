@@ -1,9 +1,9 @@
 #!/usr/bin/env perl 
 #===============================================================================
 #
-#         FILE: check_tablespace_multi.pl
+#         FILE: check_oracle_status.pl
 #
-#        USAGE: ./check_tablespace_multi.pl  
+#        USAGE: ./check_oracle_status.pl  
 #
 #  DESCRIPTION: Checks multiple oracle tablespaces
 #
@@ -159,11 +159,11 @@ __END__
 
 =head1 NAME
 
-check_tablespace_multi.pl - Checks multiple oracle tablespaces
+check_oracle_status.pl 
 
 =head1 SYNOPSIS
 
-./check_tablespace_multi.pl 
+./check_oracle_status.pl 
 
 =head1 DESCRIPTION
 

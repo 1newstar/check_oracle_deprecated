@@ -221,7 +221,7 @@ __END__
 
 =head1 NAME
 
-check_oracle_open_processes.pl - Checks multiple oracle tablespaces
+check_oracle_open_processes.pl 
 
 =head1 SYNOPSIS
 

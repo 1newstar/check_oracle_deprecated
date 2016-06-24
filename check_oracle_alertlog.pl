@@ -5,7 +5,7 @@
 #
 #        USAGE: ./check_oracle_alertlog.pl  
 #
-#  DESCRIPTION: Checks multiple oracle tablespaces
+#  DESCRIPTION: Checks the oracle alert logs
 #
 #      OPTIONS: ---
 # REQUIREMENTS: ---
@@ -243,7 +243,7 @@ __END__
 
 =head1 NAME
 
-check_oracle_alertlog.pl - Checks multiple oracle tablespaces
+check_oracle_alertlog.pl 
 
 =head1 SYNOPSIS
 

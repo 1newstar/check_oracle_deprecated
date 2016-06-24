@@ -1,9 +1,9 @@
 #!/usr/bin/env perl 
 #===============================================================================
 #
-#         FILE: check_tablespace_multi.pl
+
 #
-#        USAGE: ./check_tablespace_multi.pl  
+#        USAGE: ./check_oracle_tablespace_multi.pl  
 #
 #  DESCRIPTION: Checks multiple oracle tablespaces
 #
@@ -22,7 +22,9 @@ use strict;
 use warnings;
 use utf8;
 
-use lib '/usr/lib64/nagios/plugins/check_oracle/lib';
+#use lib '/usr/lib64/nagios/plugins/check_oracle/lib';
+use lib '/home/monitor/check_oracle/lib';
+
 
 #===============================================================================
 # MODULES
@@ -254,11 +256,11 @@ __END__
 
 =head1 NAME
 
-check_tablespace_multi.pl - Checks multiple oracle tablespaces
+check_oracle_tablespace_multi.pl - Checks multiple oracle tablespaces
 
 =head1 SYNOPSIS
 
-./check_tablespace_multi.pl 
+./check_oracle_tablespace_multi.pl 
 
 =head1 DESCRIPTION
 

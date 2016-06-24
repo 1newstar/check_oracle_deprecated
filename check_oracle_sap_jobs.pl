@@ -5,7 +5,7 @@
 #
 #        USAGE: ./check_oracle_sap_jobs.pl  
 #
-#  DESCRIPTION: Checks multiple oracle tablespaces
+#  DESCRIPTION: Checks SAP-jobs in oracle
 #
 #      OPTIONS: ---
 # REQUIREMENTS: ---
@@ -263,7 +263,7 @@ __END__
 
 =head1 NAME
 
-check_oracle_sap_jobs.pl - Checks multiple oracle tablespaces
+check_oracle_sap_jobs.pl - Checks SAP-jobs in oracle
 
 =head1 SYNOPSIS
 
