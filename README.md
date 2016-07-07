@@ -30,7 +30,7 @@ GetOptions(\%Options,
     'H:s',  'hostname:s',
     'A:s',  'authfile:s',
     'S:s',  'sid:s',
-    'T:s',  'twc-statuses:s',
+    'T:s',  'ts-statuses:s',
             'noperfdata',
             'excluded:s',
             'username:s',      #
@@ -68,13 +68,13 @@ Check multiple Oracle tablespaces at once.
 **Example:**
 
 <pre>
-# ./check_oracle_tablespace_multi.pl -H hostname --sid SID --twc-statuses DEFAULT:96:100  -A /etc/icinga2/auth/hostname.auth --excluded NULL
+# ./check_oracle_tablespace_multi.pl -H hostname --sid SID --ts-statuses DEFAULT:96:100  -A /etc/icinga2/auth/hostname.auth --excluded NULL
 </pre>
 
-- --twc-statuses DEFAULT:96:100 - For all found tablespaces the default is WARNING 96% and CRITICAL 100%
+- --ts-statuses DEFAULT:96:100 - For all found tablespaces the default is WARNING 96% and CRITICAL 100%
 - --excluded NULL - No tablespace is excluded from the check.
 - --excluded SYSAUX,USERS - These tablespaces are excluded
-- --twc-statuses DEFAULT:96:100,SYSAUX:75:90 - SYSAUX will WARN at 75% and go CRITICAL on 90%
+- --ts-statuses DEFAULT:96:100,SYSAUX:75:90 - SYSAUX will WARN at 75% and go CRITICAL on 90%
 
 
 **Example Output:**
