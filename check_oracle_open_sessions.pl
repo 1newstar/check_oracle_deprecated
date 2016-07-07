@@ -22,7 +22,7 @@ use strict;
 use warnings;
 use utf8;
 
-use lib '/usr/lib64/nagios/plugins/check_oracle/lib';
+use lib '/home/monitor/check_oracle/lib';
 
 #===============================================================================
 # MODULES

@@ -57,22 +57,24 @@ sub parse {
 	#
 	# critical,ok,warning,unknown
 	#
-	if ($Options{'twc-statuses'}) { $Options{'T'} = $Options{'twc-statuses'} };
-	if ($Options{'T'}) { $Options{'twc-statuses'} = $Options{'T'} };
+	if ($Options{'ts-statuses'}) { $Options{'T'} = $Options{'ts-statuses'} };
+	if ($Options{'T'}) { $Options{'ts-statuses'} = $Options{'T'} };
 
-	&error($caller,'$Options{twc-statuses} must be defined') if not ( $Options{'T'} or $Options{'twc-statuses'} ); 
-	&verbose($caller,'$Options{twc-statuses} = ' . $Options{'T'}  ) if ( $Options{'v'} or $Options{'verbose'} ); 
+	&error($caller,'$Options{ts-statuses} must be defined') if not ( $Options{'T'} or $Options{'ts-statuses'} ); 
+	&verbose($caller,'$Options{ts-statuses} = ' . $Options{'T'}  ) if ( $Options{'v'} or $Options{'verbose'} ); 
 
-	my @twc_statuses  = split(/\,/,$Options{'twc-statuses'});
-    my @twc_statuses_sub;
+	my @ts_statuses  = split(/\,/,$Options{'ts-statuses'});
+    my @ts_statuses_sub;
+
 
 	# DEFAULT:80:90 -> DEFAULT 80 90
-	foreach my $status (@twc_statuses) {
-      @twc_statuses_sub = split(/\:/,$status);
-	  my $tablespace = $twc_statuses_sub[0];
-	  my $warning = $twc_statuses_sub[1];
-	  my $critical = $twc_statuses_sub[2];
-	  
+	foreach my $ts_status (@ts_statuses) {
+
+      @ts_statuses_sub = split(/\:/,$ts_status);
+	  my $tablespace = $ts_statuses_sub[0];
+	  my $warning = $ts_statuses_sub[1];
+	  my $critical = $ts_statuses_sub[2];
+
 	  $Options{'tablespaces'}{$tablespace}{'warning'} = $warning;
 	  &verbose($caller, '$Options{tablespaces}{' . $tablespace . '}{warning} = ' . $Options{'tablespaces'}{$tablespace}{'warning'} ) if ( $Options{'v'} or $Options{'verbose'} );
 
@@ -82,31 +84,31 @@ sub parse {
 	  if ( $Options{'tablespaces'}{$tablespace}{'critical'} <= $Options{'tablespaces'}{$tablespace}{'warning'} ) {
 	     &error($caller,'$Options{\'tablespaces\'}{' . $tablespace . '}{\'critical\'} <= $Options{\'tablespaces\'}{'  . $tablespace . '}{\'warning\'}');
 	  }
+
     }
 
 	if (not defined $Options{'tablespaces'}{'DEFAULT'} ) {
-		&error($caller,'A DEFAULT tablespace twc-status must be defined [Example: --twc-statuses DEFAULT:80:98] ')
+		&error($caller,'A DEFAULT tablespace statuses must be defined [Example: --statuses DEFAULT:80:98] ')
 	}
-
 
     # 
 	# hostname
 	#
-	&error($caller,'$Options{hostname} must be defined') if not ( $Options{'H'} or $Options{'hostname'} ); 
 	if ($Options{'H'}) { $Options{'hostname'} = $Options{'H'} };
 	if ($Options{'hostname'}) { $Options{'H'} = $Options{'hostname'} };
+	&error($caller,'$Options{hostname} must be defined') if not ( $Options{'H'} or $Options{'hostname'} ); 
 	&verbose($caller,'$Options{hostname} = ' . $Options{'hostname'}  ) if ( $Options{'v'} or $Options{'verbose'} ); 
 
 	#
     # 
 	# sid
 	#
-	&error($caller,'$Options{sid} must be defined') if not ( $Options{'S'} or $Options{'sid'} ); 
 	if ($Options{'S'}) { $Options{'sid'} = $Options{'S'} };
 	if ($Options{'sid'}) { $Options{'S'} = $Options{'sid'} };
+	&error($caller,'$Options{sid} must be defined') if not ( $Options{'S'} or $Options{'sid'} ); 
 	&verbose($caller,'$Options{sid} = ' . $Options{'sid'}  ) if ( $Options{'v'} or $Options{'verbose'} ); 
 
-	#
+
 	# authfile
 	#
 	if ( not ( $Options{'username'} and  $Options{'password'} )) {
@@ -132,6 +134,7 @@ sub parse {
 		close(AUTHFILE) or &error($caller,'close(' . $Options{authfile} .')');
 	}
 
+
 	#
 	# username
 	#
@@ -152,6 +155,7 @@ sub parse {
 	if ($Options{'excluded'}) {
 		my @excluded = split(/\,/,$Options{'excluded'});
 		$Options{'excluded'} = \@excluded;
+	    &verbose($caller,'$Options{excluded} = ' . "@{ $Options{'excluded'} }" ) if ( $Options{'v'} or $Options{'verbose'} ); 
 	}
 
 	return %Options;

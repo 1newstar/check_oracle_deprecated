@@ -31,8 +31,8 @@ use lib '/home/monitor/check_oracle/lib';
 #===============================================================================
 
 use Module::Load;
-my $module = 'Data::Dumper';
-load $module;
+#my $module = 'Data::Dumper';
+#load $module;
 
 #===============================================================================
 # OPTIONS
@@ -81,26 +81,23 @@ sub WARN_handler {
 }
 $SIG{__WARN__} = 'WARN_handler';
 
- 
 #===============================================================================
 # Getopt::Long;
 #===============================================================================
 
-
-
 use Getopt::Long;
 Getopt::Long::Configure ("bundling");
-GetOptions(\%Options,
+GetOptions( \%Options,
     'v',    'verbose',
     'h',    'help',
     'H:s',  'hostname:s',
     'A:s',  'authfile:s',
     'S:s',  'sid:s',
-    'T:s',  'twc-statuses:s',
-            'noperfdata',
+    'T:s',  'ts-statuses:s',
             'excluded:s',
-            'username:s',      #
-            'password:s',      #
+            'noperfdata',
+			'username:s',
+			'password:s',
 );
 
 #===============================================================================
