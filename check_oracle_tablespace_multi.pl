@@ -22,7 +22,7 @@ use strict;
 use warnings;
 use utf8;
 
-#use lib '/usr/lib64/nagios/plugins/check_oracle/lib';
+#use lib '/usr/lib64/nagios/plugins/soprasteria/lib';
 use lib '/home/monitor/check_oracle/lib';
 
 
@@ -40,6 +40,7 @@ use Module::Load;
 
 my %Options = ();
 $Options{'print-options'} = "no";
+$Options{'autoextensible-mixed'} = "WARNING";
 
 #===============================================================================
 # SYGNALS - to syslog
@@ -188,12 +189,17 @@ foreach my $tablespace (keys %{ $Options{'TS'} } ) {
 	   push(@warning,$Options{'nagios-status'});
 	}
 
+	if ( $Options{'TS'}{$tablespace}{'AUTOEXTENSIBLE'} eq 'MIXED') {
+	   $Options{'nagios-msg'} = $Options{'autoextensible-mixed'};
+	   $Options{'nagios-status'} = $NagiosStatus{$Options{'autoextensible-mixed'}};
+	   push(@warning,$Options{'nagios-status'});
+	}
 
 	chomp($warning);
 	chomp($critical);
 
 	# fill msg array
-	push (@msg,sprintf "%-8s - %s \t %8s%% \t %s \n","$Options{'nagios-msg'}" , "$tablespace","$Options{'TS'}{$tablespace}{'PCT_USED'}","W[$warning\%]:C[$critical\%]:AE[$Options{'TS'}{$tablespace}{'AUTOEXTENSIBLE'}]:DF[$Options{'TS'}{$tablespace}{'DATAFILES'}]:TEMP[$Options{'TS'}{$tablespace}{'TEMP'}]:TB[$Options{'TS'}{$tablespace}{'TOTALBYTES'}]:CB[$Options{'TS'}{$tablespace}{'CURRBYTES'}]:FB[$Options{'TS'}{$tablespace}{'FREEBYTES'}]");
+	push (@msg,sprintf "%-8s - %s \t %8s%% \t %s \n","$Options{'nagios-msg'}" , "$tablespace","$Options{'TS'}{$tablespace}{'PCT_USED'}","W[$warning\%]:C[$critical\%]:AE[$Options{'TS'}{$tablespace}{'AUTOEXTENSIBLE'}]:TEMP[$Options{'TS'}{$tablespace}{'TEMP'}]");
     push (@perfdata,"$tablespace=$Options{'TS'}{$tablespace}{'PCT_USED'}\%;$warning;$critical;0;100");
 	
 }
@@ -221,12 +227,8 @@ printf  "%-8s - %s \n", $Options{'nagios-msg'}, "C[$critical]:W[$warning] $perfd
 print "\n";
 print "W    - Warning\n";
 print "C    - Critical\n";
-print "AE   - Autoextensible\n";
-print "DF   - Datafiles\n";
+print "AE   - Autoextensible (MIXED -> $Options{'autoextensible-mixed'})\n";
 print "TEMP - Temporary Tablespace\n";
-print "TB   - Total Bytes\n";
-print "CB   - Current Bytes\n";
-print "FB   - Free Bytes\n";
 print "\n";
 print @msg;
 print "\n";

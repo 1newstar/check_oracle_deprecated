@@ -188,7 +188,7 @@ sub sql {
 		    }
 
 		    if (defined ( $Options{'TS'}{$row->{'TABLESPACE_NAME'}}{'AUTOEXTENSIBLE'} ) ) {
-			  $Options{'TS'}{$row->{'TABLESPACE_NAME'}}{'AUTOEXTENSIBLE'}  = 'MULTI';
+			  $Options{'TS'}{$row->{'TABLESPACE_NAME'}}{'AUTOEXTENSIBLE'}  = 'MIXED';
 			}
 
 			$Options{'TS'}{$row->{'TABLESPACE_NAME'}}{'PCT_USED'} = ( $Options{'TS'}{$row->{'TABLESPACE_NAME'}}{'CURRBYTES'} - $Options{'TS'}{$row->{'TABLESPACE_NAME'}}{'FREEBYTES'} ) / $Options{'TS'}{$row->{'TABLESPACE_NAME'}}{'TOTALBYTES'} * 100;
