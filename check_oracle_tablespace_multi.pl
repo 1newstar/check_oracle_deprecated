@@ -158,16 +158,6 @@ foreach my $tablespace (keys %{ $Options{'TS'} } ) {
 
 	# "TABLESPACE_NAME", "PCT_USED", "ALLOCATED", "USED", "FREE", "DATAFILES"
 	next if (
-	     $Options{'TS'}{$tablespace}{'PCT_USED'} eq 'NULL'
-	     or
-	     $Options{'TS'}{$tablespace}{'ALLOCATED'} eq 'NULL'
-	     or
-	     $Options{'TS'}{$tablespace}{'USED'} eq 'NULL'
-	     or
-	     $Options{'TS'}{$tablespace}{'FREE'} eq 'NULL'
-	     or
-	     $Options{'TS'}{$tablespace}{'DATAFILES'} eq 'NULL'
-		 or 
 		 grep(/^$tablespace$/, @{ $Options{'excluded'} } )
 	); 
 
@@ -203,7 +193,7 @@ foreach my $tablespace (keys %{ $Options{'TS'} } ) {
 	chomp($critical);
 
 	# fill msg array
-	push (@msg,sprintf "%-8s - %s \t %8s%% \t %s \n","$Options{'nagios-msg'}" , "$tablespace","$Options{'TS'}{$tablespace}{'PCT_USED'}","W[$warning\%]:C[$critical\%]:AE[$Options{'TS'}{$tablespace}{'AUTOEXTENSIBLE'}]:DF[$Options{'TS'}{$tablespace}{'DATAFILES'}]");
+	push (@msg,sprintf "%-8s - %s \t %8s%% \t %s \n","$Options{'nagios-msg'}" , "$tablespace","$Options{'TS'}{$tablespace}{'PCT_USED'}","W[$warning\%]:C[$critical\%]:AE[$Options{'TS'}{$tablespace}{'AUTOEXTENSIBLE'}]:DF[$Options{'TS'}{$tablespace}{'DATAFILES'}]:TEMP[$Options{'TS'}{$tablespace}{'TEMP'}]:TB[$Options{'TS'}{$tablespace}{'TOTALBYTES'}]:CB[$Options{'TS'}{$tablespace}{'CURRBYTES'}]:FB[$Options{'TS'}{$tablespace}{'FREEBYTES'}]");
     push (@perfdata,"$tablespace=$Options{'TS'}{$tablespace}{'PCT_USED'}\%;$warning;$critical;0;100");
 	
 }
@@ -229,10 +219,14 @@ if (not defined($Options{'noperfdata'})) {
 
 printf  "%-8s - %s \n", $Options{'nagios-msg'}, "C[$critical]:W[$warning] $perfdata";
 print "\n";
-print "W  - Warning\n";
-print "C  - Critical\n";
-print "AE - Autoextensible\n";
-print "DF - Datafiles\n";
+print "W    - Warning\n";
+print "C    - Critical\n";
+print "AE   - Autoextensible\n";
+print "DF   - Datafiles\n";
+print "TEMP - Temporary Tablespace\n";
+print "TB   - Total Bytes\n";
+print "CB   - Current Bytes\n";
+print "FB   - Free Bytes\n";
 print "\n";
 print @msg;
 print "\n";
