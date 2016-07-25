@@ -227,14 +227,14 @@ if ( $Options{'ORACLE_SAP_JOB'}{'JOB_STATUS'} eq ( 'CRITICAL' or 'WARNING' )) {
 
 if ( $Options{'ORACLE_SAP_JOB'}{'LAST_RUN_SECONDS'} >= $Options{'warning'} ) {
 
-  $Options{'nagios-msg'} = 'WARNING - TIMEOUT';
+  $Options{'nagios-msg'} = 'WARNING - LAST_RUN_SECONDS => ' . $Options{'ORACLE_SAP_JOB'}{'LAST_RUN_SECONDS'};
   $Options{'nagios-status'} = $NagiosStatus{'WARNING'};
 
 }
 
 if ( $Options{'ORACLE_SAP_JOB'}{'LAST_RUN_SECONDS'} >= $Options{'critical'} ) {
 
-  $Options{'nagios-msg'} = 'CRITICAL - TIMEOUT';
+  $Options{'nagios-msg'} = 'CRITICAL - LAST_RUN_SECONDS => ' . $Options{'ORACLE_SAP_JOB'}{'LAST_RUN_SECONDS'}; 
   $Options{'nagios-status'} = $NagiosStatus{'CRITICAL'};
 
 }
