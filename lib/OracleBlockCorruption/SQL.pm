@@ -67,11 +67,6 @@ sub sql {
 		$Options{'BLOCK_CORRUPTION'} = $row;
 	}
 
-	#use Data::Dumper;
-	#print Dumper($Options{'BLOCK_CORRUPTION'});
-	#die;
-
-
 	return  %Options;
 }
 

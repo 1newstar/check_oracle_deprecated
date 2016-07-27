@@ -31,8 +31,7 @@ use lib '/home/monitor/check_oracle/lib';
 #===============================================================================
 
 use Module::Load;
-#my $module = 'Data::Dumper';
-#load $module;
+use Data::Dumper;
 
 #===============================================================================
 # OPTIONS

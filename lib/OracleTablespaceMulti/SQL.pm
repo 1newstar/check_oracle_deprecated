@@ -166,10 +166,6 @@ sub sql {
 	my $sth = $dbh->prepare($sql);
        $sth->execute;
         
-	   
-	 use Data::Dumper;
-
-
 	my $TABLESPACE_NAME;
 	while ( my $row = $sth->fetchrow_hashref ) {
 		

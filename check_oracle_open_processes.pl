@@ -29,8 +29,7 @@ use lib '/usr/lib64/nagios/plugins/check_oracle/lib';
 #===============================================================================
 
 use Module::Load;
-my $module = 'Data::Dumper';
-load $module;
+use Data::Dumper;    
 
 #===============================================================================
 # OPTIONS
@@ -199,7 +198,6 @@ if (not defined($Options{'noperfdata'}) and defined($Options{'percent'}) ) {
 print "$Options{'nagios-msg'} $perfdata \n"; 
 
 if ($Options{'print-options'} eq "yes" ) {
-	 use Data::Dumper;   
 	 print 'Options: ' ."\n\n";
 		foreach my $option (keys(%Options)) {
 			
