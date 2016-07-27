@@ -62,7 +62,7 @@ sub sql {
 
     my $sth = $dbh->prepare($sql);
        $sth->execute;
-		use Data::Dumper;
+	
 	while ( my $row = $sth->fetchrow_hashref ) {
 
 		map { $row->{$_} = "NULL" unless defined ($row->{$_}); } keys(%{$row});
